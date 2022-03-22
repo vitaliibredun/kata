@@ -37,6 +37,15 @@ public class Calc {
             num1 = Integer.parseInt(num1str.trim());
             num2 = Integer.parseInt(num2str.trim());
 
+            // if (блабла.size() != 3) {
+            //    throw new IllegalArgumentException("Формат математической операции не удовлетворяет заданию")
+            //}
+            //    if(arab[i] <0 ){
+            //        throw new IllegalArgumentException("D римской системе нет отрицательных чисел")
+
+
+
+
             if (l1 != l2) {
                 throw new IllegalArgumentException("Только арабские или только римские числа");
             }
