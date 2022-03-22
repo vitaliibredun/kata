@@ -19,6 +19,10 @@ public class Calc {
             String num1str = words[0];
             operation = words[1];
             String num2str = words[2];
+
+            if (words.length>3){
+                throw new IllegalArgumentException("Формат математической операции не удовлетворяет заданию");
+            }
     
             String[] arab = new String[] {"10", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
             String[] rome = new String[] {"X", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
@@ -37,15 +41,6 @@ public class Calc {
             num1 = Integer.parseInt(num1str.trim());
             num2 = Integer.parseInt(num2str.trim());
 
-            // if (блабла.size() != 3) {
-            //    throw new IllegalArgumentException("Формат математической операции не удовлетворяет заданию")
-            //}
-            //    if(arab[i] <0 ){
-            //        throw new IllegalArgumentException("D римской системе нет отрицательных чисел")
-
-
-
-
             if (l1 != l2) {
                 throw new IllegalArgumentException("Только арабские или только римские числа");
             }
@@ -56,9 +51,14 @@ public class Calc {
             } else if (l1) {
                 System.out.println(calc(num1, num2, operation));
             } else {
-                String romanNumeralOutput = toRoman(calc(num1, num2, operation));
+                int result = calc(num1, num2, operation);
+                if (result<=0){
+                    throw new IllegalArgumentException("В римской системе нет отрицательных чисел");
+                }
+                String romanNumeralOutput = toRoman(result);
                 System.out.println(romanNumeralOutput);
             }
+
         } catch (NumberFormatException e) {
             System.err.println("Веедите числа не больше X");
         }
